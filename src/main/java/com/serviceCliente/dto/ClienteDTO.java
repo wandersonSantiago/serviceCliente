@@ -2,27 +2,31 @@ package com.serviceCliente.dto;
 
 import java.io.Serializable;
 
-import javax.validation.constraints.NotNull;
-
+import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
 
-import com.serviceCliente.model.Categoria;
+import com.serviceCliente.model.Cliente;
 
-public class CategoriaDTO implements Serializable{
+public class ClienteDTO implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	
 	private Integer id;
-	@NotNull(message="O nome não pode ser nulo!")
+	@NotEmpty(message="O nome não pode ser nulo!")
 	@Length(min=5, max=80, message="O nome tem que ter no minimo 5 e no maximo 80 caracteres")
 	private String nome;
+	@NotEmpty(message="O email é obrigatório")
+	@Email(message="Email inválido!")
+	private String email;
 	
-	public CategoriaDTO(){
+	public ClienteDTO(){
 		
 	}
-	public CategoriaDTO(Categoria obj){
+	public ClienteDTO(Cliente obj){
 		id = obj.getId();
 		nome = obj.getNome();
+		email = obj.getEmail();
 	}
 	
 	public Integer getId() {
@@ -36,6 +40,12 @@ public class CategoriaDTO implements Serializable{
 	}
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	
 	

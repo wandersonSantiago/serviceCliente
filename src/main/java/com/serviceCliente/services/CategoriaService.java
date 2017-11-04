@@ -9,9 +9,11 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
+import com.serviceCliente.dto.CategoriaDTO;
 import com.serviceCliente.exception.DataIntegrityException;
 import com.serviceCliente.exception.ObjectNotFoundException;
 import com.serviceCliente.model.Categoria;
+import com.serviceCliente.model.Cliente;
 import com.serviceCliente.repositories.CategoriaRepository;
 
 @Service
@@ -47,9 +49,18 @@ public class CategoriaService {
 		return categoriaRepository.save(obj);
 	}
 
+	public Categoria fromDTO(CategoriaDTO objDTO) {
+		return new Categoria(objDTO.getId(), objDTO.getNome());
+	}
 	public Categoria update(Categoria obj) {
-		findId(obj.getId());
-		return categoriaRepository.save(obj);
+		Categoria newCategoria = findId(obj.getId());
+		updateData(newCategoria, obj);
+		return categoriaRepository.save(newCategoria);
+	}
+
+	private void updateData(Categoria newCliente, Categoria obj) {
+		
+		newCliente.setNome(obj.getNome());
 	}
 
 	public void delete(Integer id) {
