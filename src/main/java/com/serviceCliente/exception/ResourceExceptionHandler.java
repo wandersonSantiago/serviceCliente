@@ -1,4 +1,4 @@
-package com.servieCliente.exception;
+package com.serviceCliente.exception;
 
 import javax.servlet.http.HttpServletRequest;
 

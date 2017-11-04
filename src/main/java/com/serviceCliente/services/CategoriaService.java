@@ -1,13 +1,13 @@
-package com.servieCliente.services;
+package com.serviceCliente.services;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.servieCliente.exception.ObjectNotFoundException;
-import com.servieCliente.model.Categoria;
-import com.servieCliente.repositories.CategoriaRepository;
+import com.serviceCliente.exception.ObjectNotFoundException;
+import com.serviceCliente.model.Categoria;
+import com.serviceCliente.repositories.CategoriaRepository;
 
 @Service
 public class CategoriaService {
